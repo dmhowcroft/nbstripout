@@ -70,6 +70,23 @@ except ImportError:
         def write(nb, f):
             return current.write(nb, f, 'json')
 
+        class Sentinel(object):
+
+            def __init__(self, name, module, docstring=None):
+                self.name = name
+                self.module = module
+                if docstring:
+                    self.__doc__ = docstring
+
+
+            def __repr__(self):
+                return str(self.module)+'.'+self.name
+
+        NO_CONVERT = Sentinel('NO_CONVERT', __name__,
+                              """Value to prevent nbformat to convert notebooks to most recent version.                                                                                                              
+                              """)
+
+
 
 def _cells(nb):
     """Yield all cells in an nbformat-insensitive manner"""
