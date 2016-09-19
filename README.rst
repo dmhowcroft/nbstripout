@@ -1,6 +1,3 @@
-.. image:: https://travis-ci.org/kynan/nbstripout.svg?branch=master
-    :target: https://travis-ci.org/kynan/nbstripout
-
 nbstripout: strip output from Jupyter and IPython notebooks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -47,18 +44,18 @@ Set up a git filter using nbstripout as follows: ::
     git config filter.nbstripout.clean '/path/to/nbstripout'
     git config filter.nbstripout.smudge cat
     git config filter.nbstripout.required true
+    
+You can use the ``--global`` flag to apply these settings to all repos.
 
 Create a file ``.gitattributes`` or ``.git/info/attributes`` with: ::
 
     *.ipynb filter=nbstripout
+    
+On Linux systems, you can create ``~/.config/git/attributes`` for a 
+user-level, site-wide gitattributes file.
 
-Mercurial usage
+Metadata
 ===============
 
-Mercurial does not have the equivalent of smudge filters.  One can use
-an encode/decode hook but this has some issues.  An alternative
-solution is to provide a set of commands that first run ``nbstripout``,
-then perform these operations. This is the approach of the `mmf-setup`_
-package.
-
-.. _mmf-setup: http://bitbucket.org/mforbes/mmf_setup
+This repo built on mforbes/nbstripout.
+README modified by dmhowcroft.
